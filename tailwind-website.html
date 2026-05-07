@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Sample Site</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+  <!-- ============================================================
+       NAVBAR — sticky, responsive, logo + links + CTA
+  ============================================================ -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-xl font-bold tracking-tight">
+        <span class="text-blue-600">●</span> Brandly
+      </a>
+      <ul class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+        <li><a href="#features" class="hover:text-blue-600 transition">Features</a></li>
+        <li><a href="#pricing" class="hover:text-blue-600 transition">Pricing</a></li>
+        <li><a href="#about" class="hover:text-blue-600 transition">About</a></li>
+        <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
+      </ul>
+      <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO — gradient bg, large heading, dual CTAs
+  ============================================================ -->
+  <section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+        New · v2.0
+      </span>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+        Build beautiful sites <br />
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          without writing CSS.
+        </span>
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+        A simple sample page demonstrating navigation, hero, grid layouts, forms, and more — all using Tailwind utility classes.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#features" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg transition shadow-lg shadow-blue-600/30">
+          Explore Features
+        </a>
+        <a href="#contact" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 font-bold px-6 py-3 rounded-lg transition">
+          Contact Sales →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FEATURES — 3-column responsive grid of cards
+  ============================================================ -->
+  <section id="features" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">Everything you need</h2>
+        <p class="text-gray-500">Six features. Zero setup. Pure utility classes.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature card -->
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl mb-4">⚡</div>
+          <h3 class="font-bold text-lg mb-2">Lightning Fast</h3>
+          <p class="text-gray-600 text-sm">Utility classes compile to tiny CSS bundles. No runtime cost.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-4">🎨</div>
+          <h3 class="font-bold text-lg mb-2">Design Tokens</h3>
+          <p class="text-gray-600 text-sm">Consistent spacing, color, and type scales out of the box.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center text-2xl mb-4">📱</div>
+          <h3 class="font-bold text-lg mb-2">Responsive</h3>
+          <p class="text-gray-600 text-sm">Mobile-first breakpoints: <code class="text-xs bg-gray-100 px-1 rounded">sm md lg xl</code>.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl mb-4">🌙</div>
+          <h3 class="font-bold text-lg mb-2">Dark Mode</h3>
+          <p class="text-gray-600 text-sm">One <code class="text-xs bg-gray-100 px-1 rounded">dark:</code> prefix away from a full theme swap.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center text-2xl mb-4">🧩</div>
+          <h3 class="font-bold text-lg mb-2">Composable</h3>
+          <p class="text-gray-600 text-sm">Build any component by combining small, predictable utilities.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-2xl mb-4">❤️</div>
+          <h3 class="font-bold text-lg mb-2">Loved by Devs</h3>
+          <p class="text-gray-600 text-sm">Stop naming CSS classes. Just describe what you want.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT — 2-column flex: text + image side-by-side
+  ============================================================ -->
+  <section id="about" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-blue-600 text-sm font-bold uppercase tracking-wider">About</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Why utility-first?</h2>
+        <p class="text-gray-600 mb-4">
+          Traditional CSS makes you invent a class for every component. Tailwind flips that — you compose existing utilities right in your markup.
+        </p>
+        <p class="text-gray-600 mb-6">
+          The result: faster iteration, smaller stylesheets, and a design system enforced by default.
+        </p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2"><span class="text-green-500 font-bold">✓</span> No more naming things</li>
+          <li class="flex items-start gap-2"><span class="text-green-500 font-bold">✓</span> Predictable output size</li>
+          <li class="flex items-start gap-2"><span class="text-green-500 font-bold">✓</span> Easier to refactor</li>
+        </ul>
+      </div>
+      <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl aspect-square flex items-center justify-center text-white text-6xl font-black shadow-2xl">
+        TW
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PRICING — 3 plan cards, middle one highlighted
+  ============================================================ -->
+  <section id="pricing" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">Simple pricing</h2>
+        <p class="text-gray-500">Pick the tier that fits. Cancel anytime.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <!-- Starter -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <h3 class="font-bold text-lg mb-1">Starter</h3>
+          <p class="text-gray-500 text-sm mb-6">For tinkering</p>
+          <p class="text-4xl font-extrabold mb-1">$0</p>
+          <p class="text-gray-400 text-sm mb-6">forever</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-8">
+            <li>✓ 1 project</li>
+            <li>✓ Community support</li>
+            <li>✓ Basic templates</li>
+          </ul>
+          <button class="w-full border border-gray-300 hover:bg-gray-50 font-bold py-2 rounded-lg transition">Get Started</button>
+        </div>
+
+        <!-- Pro (highlighted) -->
+        <div class="bg-gray-900 text-white rounded-2xl p-8 relative scale-105 shadow-2xl">
+          <span class="absolute -top-3 right-6 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">POPULAR</span>
+          <h3 class="font-bold text-lg mb-1">Pro</h3>
+          <p class="text-gray-400 text-sm mb-6">For solo devs</p>
+          <p class="text-4xl font-extrabold mb-1">$19<span class="text-base font-normal text-gray-400">/mo</span></p>
+          <p class="text-gray-400 text-sm mb-6">billed monthly</p>
+          <ul class="space-y-2 text-sm text-gray-300 mb-8">
+            <li>✓ Unlimited projects</li>
+            <li>✓ Priority support</li>
+            <li>✓ All templates</li>
+            <li>✓ Custom domain</li>
+          </ul>
+          <button class="w-full bg-blue-500 hover:bg-blue-600 font-bold py-2 rounded-lg transition">Start Free Trial</button>
+        </div>
+
+        <!-- Team -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+          <h3 class="font-bold text-lg mb-1">Team</h3>
+          <p class="text-gray-500 text-sm mb-6">For agencies</p>
+          <p class="text-4xl font-extrabold mb-1">$49<span class="text-base font-normal text-gray-400">/mo</span></p>
+          <p class="text-gray-400 text-sm mb-6">per seat</p>
+          <ul class="space-y-2 text-sm text-gray-600 mb-8">
+            <li>✓ Everything in Pro</li>
+            <li>✓ Shared workspace</li>
+            <li>✓ Role-based access</li>
+            <li>✓ SSO &amp; audit logs</li>
+          </ul>
+          <button class="w-full border border-gray-300 hover:bg-gray-50 font-bold py-2 rounded-lg transition">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TESTIMONIAL — single quote, centered
+  ============================================================ -->
+  <section class="py-20 px-6 bg-blue-600 text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-medium leading-relaxed mb-6">
+        "Switching to Tailwind cut our CSS by 80% and our team ships UI changes in hours instead of days."
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold">JM</div>
+        <div class="text-left">
+          <p class="font-bold">Jamie Morales</p>
+          <p class="text-blue-200 text-sm">Lead Engineer · Acme Co.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT FORM — labeled inputs, textarea, submit
+  ============================================================ -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">Get in touch</h2>
+        <p class="text-gray-500">We usually respond within a day.</p>
+      </div>
+
+      <form class="space-y-5 bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">First name</label>
+            <input type="text" placeholder="Christian"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" />
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">Last name</label>
+            <input type="text" placeholder="Dela Cruz"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+          <input type="email" placeholder="you@example.com"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">Topic</label>
+          <select class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+            <option>General inquiry</option>
+            <option>Sales</option>
+            <option>Support</option>
+            <option>Partnership</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+          <textarea rows="4" placeholder="Tell us a bit about your project..."
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition resize-none"></textarea>
+        </div>
+
+        <label class="flex items-start gap-2 text-sm text-gray-600">
+          <input type="checkbox" class="mt-1 w-4 h-4 accent-blue-600" />
+          <span>I agree to the <a href="#" class="text-blue-600 hover:underline">terms &amp; privacy policy</a>.</span>
+        </label>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-blue-600/30">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER — multi-column links + copyright
+  ============================================================ -->
+  <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div class="col-span-2 md:col-span-1">
+        <p class="text-white font-bold text-lg mb-2"><span class="text-blue-400">●</span> Brandly</p>
+        <p class="text-sm">Build beautiful sites without writing CSS.</p>
+      </div>
+      <div>
+        <p class="text-white font-bold text-sm uppercase tracking-wider mb-3">Product</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-white transition">Features</a></li>
+          <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+          <li><a href="#" class="hover:text-white transition">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white font-bold text-sm uppercase tracking-wider mb-3">Company</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-white transition">About</a></li>
+          <li><a href="#" class="hover:text-white transition">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white font-bold text-sm uppercase tracking-wider mb-3">Legal</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+          <li><a href="#" class="hover:text-white transition">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+      <p>© 2026 Brandly. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition">Twitter</a>
+        <a href="#" class="hover:text-white transition">GitHub</a>
+        <a href="#" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

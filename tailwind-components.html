@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tailwind Scaffold</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen p-10">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    /* ============================================================
+       UTILS
+    ============================================================ */
+    function Section({ title, children }) {
+      return (
+        <div className="mb-8">
+          <h2 className="text-xl font-bold text-gray-500 uppercase tracking-widest mb-4 border-b pb-2">
+            {title}
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            {children}
+          </div>
+        </div>
+      );
+    }
+
+    function Card({ title, hint, children }) {
+      return (
+        <div className="bg-white rounded-xl shadow p-6 w-full h-full">
+          <h3 className="font-bold text-lg mb-1">{title}</h3>
+          {hint && <p className="text-xs text-gray-400 font-mono mb-3">{hint}</p>}
+          {children}
+        </div>
+      );
+    }
+
+    function Code({ children }) {
+      return (
+        <code className="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-mono">{children}</code>
+      );
+    }
+
+
+    /* ============================================================
+       01 — UTILITY-FIRST BASICS
+       Topics: stacking utilities to style anything
+    ============================================================ */
+    function UtilityBasicsDemo() {
+      return (
+        <Card title="01 — Utility-First Basics" hint="stack small utilities to compose styles">
+          <div className="bg-blue-500 text-white p-4 rounded-lg font-bold text-center">
+            bg-blue-500 + text-white + p-4 + rounded-lg
+          </div>
+          <p className="text-xs text-gray-500 mt-3">No custom CSS — just classes side by side.</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       02 — TYPOGRAPHY
+       Topics: text-{size}, font-{weight}, leading, tracking
+    ============================================================ */
+    function TypographyDemo() {
+      return (
+        <Card title="02 — Typography" hint="text-* · font-* · leading-* · tracking-*">
+          <p className="text-xs text-gray-500">text-xs</p>
+          <p className="text-base">text-base (default)</p>
+          <p className="text-2xl font-bold">text-2xl font-bold</p>
+          <p className="text-lg italic tracking-widest">italic tracking-widest</p>
+          <p className="text-sm leading-loose mt-2">leading-loose makes line height larger so long paragraphs breathe.</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       03 — COLORS & OPACITY
+       Topics: bg-, text-, border-, /opacity slash syntax
+    ============================================================ */
+    function ColorsDemo() {
+      return (
+        <Card title="03 — Colors & Opacity" hint="bg-{color}-{shade} · /50 for opacity">
+          <div className="grid grid-cols-5 gap-1 mb-3">
+            {[100,300,500,700,900].map(shade => (
+              <div key={shade} className={`bg-blue-${shade} h-10 rounded text-[10px] text-white flex items-center justify-center`}>{shade}</div>
+            ))}
+          </div>
+          <div className="bg-purple-500 text-white p-2 rounded mb-1 text-sm">bg-purple-500</div>
+          <div className="bg-purple-500/50 text-white p-2 rounded text-sm">bg-purple-500/50 (50% opacity)</div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       04 — SPACING
+       Topics: p-, m-, space-x/y, px/py, mt/mb/ml/mr
+    ============================================================ */
+    function SpacingDemo() {
+      return (
+        <Card title="04 — Spacing" hint="p-* · m-* · px/py · space-y-*">
+          <div className="bg-green-100 p-1 rounded mb-2 text-xs">p-1</div>
+          <div className="bg-green-200 p-3 rounded mb-2 text-xs">p-3</div>
+          <div className="bg-green-300 p-6 rounded mb-3 text-xs">p-6</div>
+          <div className="space-y-2">
+            <div className="bg-gray-100 p-2 rounded text-xs">space-y-2 between siblings</div>
+            <div className="bg-gray-100 p-2 rounded text-xs">no manual margins needed</div>
+            <div className="bg-gray-100 p-2 rounded text-xs">parent owns the gap</div>
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       05 — SIZING
+       Topics: w-, h-, min-/max-, fractions, full
+    ============================================================ */
+    function SizingDemo() {
+      return (
+        <Card title="05 — Sizing" hint="w-* · h-* · w-1/2 · max-w-*">
+          <div className="bg-blue-500 text-white text-xs p-1 rounded mb-1 w-1/4">w-1/4</div>
+          <div className="bg-blue-500 text-white text-xs p-1 rounded mb-1 w-1/2">w-1/2</div>
+          <div className="bg-blue-500 text-white text-xs p-1 rounded mb-1 w-3/4">w-3/4</div>
+          <div className="bg-blue-500 text-white text-xs p-1 rounded mb-3 w-full">w-full</div>
+          <div className="bg-pink-500 text-white text-xs p-1 rounded h-16 flex items-center justify-center">h-16</div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       06 — FLEXBOX
+       Topics: flex, justify-, items-, gap, wrap
+    ============================================================ */
+    function FlexboxDemo() {
+      return (
+        <Card title="06 — Flexbox" hint="flex · justify-* · items-* · gap-*">
+          <div className="flex justify-between items-center bg-gray-100 p-2 rounded mb-2">
+            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded">A</span>
+            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded">B</span>
+            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded">C</span>
+          </div>
+          <p className="text-xs text-gray-400 mb-2">justify-between · items-center</p>
+          <div className="flex gap-2 flex-wrap">
+            {[1,2,3,4,5,6,7,8].map(n => (
+              <span key={n} className="bg-purple-500 text-white text-xs px-3 py-1 rounded">{n}</span>
+            ))}
+          </div>
+          <p className="text-xs text-gray-400 mt-1">gap-2 · flex-wrap</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       07 — GRID
+       Topics: grid-cols-*, gap, col-span-*
+    ============================================================ */
+    function GridDemo() {
+      return (
+        <Card title="07 — Grid" hint="grid · grid-cols-* · col-span-* · gap-*">
+          <div className="grid grid-cols-3 gap-2 mb-3">
+            {[1,2,3,4,5,6].map(n => (
+              <div key={n} className="bg-indigo-500 text-white text-xs p-2 rounded text-center">{n}</div>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 gap-2">
+            <div className="col-span-2 bg-pink-500 text-white text-xs p-2 rounded text-center">col-span-2</div>
+            <div className="bg-pink-500 text-white text-xs p-2 rounded text-center">1</div>
+            <div className="bg-pink-500 text-white text-xs p-2 rounded text-center">1</div>
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       08 — BORDERS & ROUNDED
+       Topics: border, border-{n}, rounded-*, divide-*
+    ============================================================ */
+    function BordersDemo() {
+      return (
+        <Card title="08 — Borders & Rounded" hint="border-* · rounded-* · divide-*">
+          <div className="grid grid-cols-2 gap-2 mb-3">
+            <div className="border border-gray-300 p-2 text-xs text-center rounded">border</div>
+            <div className="border-2 border-blue-500 p-2 text-xs text-center rounded">border-2 blue</div>
+            <div className="border-4 border-dashed border-purple-500 p-2 text-xs text-center rounded">dashed</div>
+            <div className="border border-gray-300 p-2 text-xs text-center rounded-full">rounded-full</div>
+          </div>
+          <div className="divide-y divide-gray-200 border rounded">
+            <div className="p-2 text-xs">divide-y row 1</div>
+            <div className="p-2 text-xs">divide-y row 2</div>
+            <div className="p-2 text-xs">divide-y row 3</div>
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       09 — SHADOWS & RINGS
+       Topics: shadow-*, ring-*, ring-offset-*
+    ============================================================ */
+    function ShadowsDemo() {
+      return (
+        <Card title="09 — Shadows & Rings" hint="shadow-* · ring-* · ring-offset-*">
+          <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="bg-white p-3 text-xs text-center rounded shadow-sm">shadow-sm</div>
+            <div className="bg-white p-3 text-xs text-center rounded shadow">shadow</div>
+            <div className="bg-white p-3 text-xs text-center rounded shadow-lg">shadow-lg</div>
+            <div className="bg-white p-3 text-xs text-center rounded shadow-2xl">shadow-2xl</div>
+          </div>
+          <div className="bg-white p-3 text-xs text-center rounded ring-2 ring-blue-500 ring-offset-2">ring-2 ring-blue-500 ring-offset-2</div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       10 — BACKGROUNDS & GRADIENTS
+       Topics: bg-gradient-to-*, from-, via-, to-
+    ============================================================ */
+    function BackgroundsDemo() {
+      return (
+        <Card title="10 — Backgrounds & Gradients" hint="bg-gradient-to-* · from-* · via-* · to-*">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center p-3 rounded mb-2 text-sm font-bold">
+            to-r from-blue-500 to-purple-500
+          </div>
+          <div className="bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 text-white text-center p-3 rounded mb-2 text-sm font-bold">
+            to-br with via-*
+          </div>
+          <div className="bg-gradient-to-t from-gray-900 to-transparent text-white text-center p-3 rounded text-sm font-bold h-20 flex items-end justify-center">
+            to-t from-gray-900 to-transparent
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       11 — HOVER, FOCUS, ACTIVE
+       Topics: state variants — hover:, focus:, active:, disabled:
+    ============================================================ */
+    function StatesDemo() {
+      return (
+        <Card title="11 — Hover · Focus · Active" hint="hover:* · focus:* · active:* · disabled:*">
+          <button className="bg-blue-500 hover:bg-blue-700 active:scale-95 text-white px-4 py-2 rounded font-bold w-full mb-2 transition">
+            Hover & click me
+          </button>
+          <input type="text" placeholder="Focus me"
+            className="border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 px-3 py-2 rounded w-full text-sm outline-none mb-2" />
+          <button disabled className="bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2 rounded font-bold w-full">
+            disabled:opacity-50
+          </button>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       12 — RESPONSIVE
+       Topics: sm:, md:, lg:, xl:, 2xl: — mobile-first
+    ============================================================ */
+    function ResponsiveDemo() {
+      return (
+        <Card title="12 — Responsive" hint="sm: · md: · lg: — resize the window!">
+          <div className="bg-red-500 sm:bg-yellow-500 md:bg-green-500 lg:bg-blue-500 text-white p-4 rounded text-center font-bold mb-2">
+            Color changes by breakpoint
+          </div>
+          <p className="text-xs text-gray-500 mb-3">red &lt; sm · yellow sm · green md · blue lg</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
+            {[1,2,3,4].map(n => (
+              <div key={n} className="bg-indigo-500 text-white text-xs p-2 rounded text-center">{n}</div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-1">1 col → 2 cols sm → 4 cols md</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       13 — DARK MODE
+       Topics: dark: variant (requires darkMode: 'class')
+    ============================================================ */
+    function DarkModeDemo() {
+      const [isDark, setIsDark] = React.useState(false);
+
+      React.useEffect(() => {
+        document.documentElement.classList.toggle('dark', isDark);
+      }, [isDark]);
+
+      return (
+        <Card title="13 — Dark Mode" hint="dark:* (toggles <html class='dark'>)">
+          <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 rounded border dark:border-gray-700 mb-3 transition">
+            <p className="font-bold">Hello!</p>
+            <p className="text-sm text-gray-500 dark:text-gray-300">This box swaps theme via dark: classes.</p>
+          </div>
+          <button onClick={() => setIsDark(!isDark)} className="bg-gray-800 text-white px-4 py-2 rounded font-bold w-full hover:bg-gray-700">
+            Toggle Dark ({isDark ? 'on' : 'off'})
+          </button>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       14 — TRANSITIONS & ANIMATIONS
+       Topics: transition, duration, ease, animate-*
+    ============================================================ */
+    function TransitionsDemo() {
+      const [on, setOn] = React.useState(false);
+      return (
+        <Card title="14 — Transitions & Animations" hint="transition · duration-* · animate-*">
+          <div onClick={() => setOn(!on)}
+            className={`cursor-pointer text-white text-center p-3 rounded font-bold transition-all duration-500 ease-in-out mb-3 ${on ? 'bg-purple-500 translate-x-8' : 'bg-blue-500'}`}>
+            Click me (transition)
+          </div>
+          <div className="flex gap-2 justify-around">
+            <div className="bg-blue-500 w-10 h-10 rounded animate-spin"></div>
+            <div className="bg-green-500 w-10 h-10 rounded animate-pulse"></div>
+            <div className="bg-red-500 w-10 h-10 rounded animate-bounce"></div>
+            <div className="bg-yellow-500 w-10 h-10 rounded animate-ping"></div>
+          </div>
+          <p className="text-xs text-gray-500 mt-2 text-center">spin · pulse · bounce · ping</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       15 — TRANSFORMS
+       Topics: scale-*, rotate-*, translate-*, skew-*
+    ============================================================ */
+    function TransformsDemo() {
+      return (
+        <Card title="15 — Transforms" hint="scale-* · rotate-* · translate-* · skew-*">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-blue-500 text-white p-3 rounded text-center text-xs hover:scale-110 transition">hover:scale-110</div>
+            <div className="bg-purple-500 text-white p-3 rounded text-center text-xs hover:rotate-12 transition">hover:rotate-12</div>
+            <div className="bg-pink-500 text-white p-3 rounded text-center text-xs hover:-translate-y-2 transition">hover:-translate-y-2</div>
+            <div className="bg-green-500 text-white p-3 rounded text-center text-xs hover:skew-y-3 transition">hover:skew-y-3</div>
+          </div>
+          <p className="text-xs text-gray-400 mt-2 text-center">hover each box</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       16 — GROUP & PEER
+       Topics: group-hover, peer-checked, peer-focus
+    ============================================================ */
+    function GroupPeerDemo() {
+      return (
+        <Card title="16 — Group & Peer" hint="group-hover:* · peer-checked:*">
+          <div className="group bg-gray-100 hover:bg-gray-800 transition p-4 rounded cursor-pointer mb-3">
+            <p className="text-gray-800 group-hover:text-white font-bold text-sm">Hover the parent</p>
+            <p className="text-gray-500 group-hover:text-gray-300 text-xs">Children react via group-hover</p>
+          </div>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" className="peer" />
+            <span className="text-sm text-gray-500 peer-checked:text-green-600 peer-checked:font-bold">
+              Check me — peer-checked changes this text
+            </span>
+          </label>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       17 — POSITIONING
+       Topics: relative, absolute, sticky, z-index, inset-*
+    ============================================================ */
+    function PositioningDemo() {
+      return (
+        <Card title="17 — Positioning" hint="relative · absolute · z-* · top/left/right/bottom">
+          <div className="relative bg-gray-100 h-32 rounded mb-3">
+            <div className="absolute top-0 left-0 bg-blue-500 text-white text-xs px-2 py-1 rounded">top-0 left-0</div>
+            <div className="absolute top-0 right-0 bg-purple-500 text-white text-xs px-2 py-1 rounded">top-0 right-0</div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs px-2 py-1 rounded">centered bottom</div>
+            <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-500">parent: relative</div>
+          </div>
+          <div className="relative">
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded font-bold w-full">Notifications</button>
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       18 — OVERFLOW & SCROLL
+       Topics: overflow-*, truncate, line-clamp-*
+    ============================================================ */
+    function OverflowDemo() {
+      return (
+        <Card title="18 — Overflow & Scroll" hint="overflow-* · truncate · line-clamp-*">
+          <div className="bg-gray-100 rounded p-2 mb-3 h-24 overflow-y-auto text-xs">
+            <p className="mb-2">Scrollable area with overflow-y-auto.</p>
+            {Array.from({length: 10}).map((_, i) => <p key={i}>Line {i + 1}</p>)}
+          </div>
+          <p className="bg-gray-100 rounded p-2 mb-2 text-xs truncate">truncate: this very long text will be cut off with an ellipsis when it overflows</p>
+          <p className="bg-gray-100 rounded p-2 text-xs line-clamp-2">line-clamp-2: this text will be clamped to exactly two lines no matter how long it is, then end with an ellipsis at the end of the second line.</p>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       19 — FORMS
+       Topics: input, select, checkbox, focus rings
+    ============================================================ */
+    function FormsDemo() {
+      return (
+        <Card title="19 — Forms" hint="input/select/checkbox + focus styling">
+          <label className="block text-xs font-bold text-gray-600 mb-1">Email</label>
+          <input type="email" placeholder="you@example.com"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-sm mb-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none" />
+
+          <label className="block text-xs font-bold text-gray-600 mb-1">Country</label>
+          <select className="w-full border border-gray-300 rounded px-3 py-2 text-sm mb-3 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none">
+            <option>Philippines</option>
+            <option>Japan</option>
+            <option>USA</option>
+          </select>
+
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" className="w-4 h-4 accent-blue-500" />
+            Subscribe to newsletter
+          </label>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       20 — COMMON PATTERNS
+       Topics: button, badge, alert, card combos
+    ============================================================ */
+    function PatternsDemo() {
+      return (
+        <Card title="20 — Common Patterns" hint="button · badge · alert">
+          <div className="flex gap-2 flex-wrap mb-3">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg font-bold transition">Primary</button>
+            <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm px-4 py-2 rounded-lg font-bold transition">Secondary</button>
+            <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg font-bold transition">Danger</button>
+          </div>
+          <div className="flex gap-2 flex-wrap mb-3">
+            <span className="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full font-bold">Active</span>
+            <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-0.5 rounded-full font-bold">Pending</span>
+            <span className="bg-red-100 text-red-700 text-xs px-2 py-0.5 rounded-full font-bold">Failed</span>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-sm text-blue-700">
+            <p className="font-bold">Info</p>
+            <p className="text-xs">Alert with left border accent.</p>
+          </div>
+        </Card>
+      );
+    }
+
+
+    /* ============================================================
+       APP
+    ============================================================ */
+    function App() {
+      return (
+        <div className="max-w-screen-2xl mx-auto">
+          <div className="mb-10">
+            <h1 className="text-4xl font-bold">Tailwind Scaffold</h1>
+            <p className="text-gray-400 mt-1 font-mono text-sm">// utility-first refresher — 20 topics</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <Section title="01 — Utility-First Basics"><UtilityBasicsDemo /></Section>
+          <Section title="02 — Typography"><TypographyDemo /></Section>
+          <Section title="03 — Colors & Opacity"><ColorsDemo /></Section>
+          <Section title="04 — Spacing"><SpacingDemo /></Section>
+          <Section title="05 — Sizing"><SizingDemo /></Section>
+          <Section title="06 — Flexbox"><FlexboxDemo /></Section>
+          <Section title="07 — Grid"><GridDemo /></Section>
+          <Section title="08 — Borders & Rounded"><BordersDemo /></Section>
+          <Section title="09 — Shadows & Rings"><ShadowsDemo /></Section>
+          <Section title="10 — Backgrounds & Gradients"><BackgroundsDemo /></Section>
+          <Section title="11 — Hover · Focus · Active"><StatesDemo /></Section>
+          <Section title="12 — Responsive"><ResponsiveDemo /></Section>
+          <Section title="13 — Dark Mode"><DarkModeDemo /></Section>
+          <Section title="14 — Transitions & Animations"><TransitionsDemo /></Section>
+          <Section title="15 — Transforms"><TransformsDemo /></Section>
+          <Section title="16 — Group & Peer"><GroupPeerDemo /></Section>
+          <Section title="17 — Positioning"><PositioningDemo /></Section>
+          <Section title="18 — Overflow & Scroll"><OverflowDemo /></Section>
+          <Section title="19 — Forms"><FormsDemo /></Section>
+          <Section title="20 — Common Patterns"><PatternsDemo /></Section>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+  </script>
+</body>
+</html>
