@@ -54,6 +54,7 @@ Old topics aren't deleted — flip the comments in `App.jsx` to revisit any of t
 
 | # | Folder | Concepts |
 |---|--------|----------|
+| 00 | `00-file-fetch` | Custom topic slot — `useEffect`, `fetch`, `AbortController`, loading/error/empty states, CSS Modules |
 | 01 | `01-jsx-lists` | JSX, `.map()` to render lists, `key`, inline `style` |
 | 02 | `02-usestate` | `useState`, event handlers, re-rendering |
 
