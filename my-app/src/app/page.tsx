@@ -63,14 +63,13 @@ export default function Home() {
             Documentation
           </a>
 
-          <Image 
-            src="/images.jpeg" 
-            alt="Profile" 
-            width={100} 
+          <Image
+            src="/images.jpeg"
+            alt="Profile"
+            width={100}
             height={100}
             className="rounded-full"
           />
-          
         </div>
       </main>
     </div>
