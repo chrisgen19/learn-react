@@ -1,8 +1,7 @@
+import type { Post as PostData } from "@/lib/posts";
+
 type PostProps = {
-  post: {
-    id: number;
-    title: string;
-  };
+  post: PostData;
 };
 
 export function Post({ post }: PostProps) {

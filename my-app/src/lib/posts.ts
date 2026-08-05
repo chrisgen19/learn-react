@@ -1,4 +1,9 @@
-export async function getPosts() {
+export type Post = {
+  id: number;
+  title: string;
+};
+
+export async function getPosts(): Promise<Post[]> {
   return [
     { id: 1, title: "Learning React" },
     { id: 2, title: "Learning Next.js" },
