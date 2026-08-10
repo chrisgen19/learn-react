@@ -1,4 +1,5 @@
 import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 import { useState } from "react";
 import type { Todo } from "./types/todo";
 
@@ -21,6 +22,7 @@ function App() {
     <main>
       <h1>My Todo App</h1>
       <TodoForm onAddTodo={addTodo} />
+      <TodoList todos={todos} />
       <p>{todos.length} todos</p>
     </main>
   );
