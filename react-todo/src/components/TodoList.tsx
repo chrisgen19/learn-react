@@ -1,3 +1,4 @@
+import TodoItem from "./TodoItem";
 import type { Todo } from "../types/todo";
 
 type TodoListProps = {
@@ -8,7 +9,7 @@ function TodoList({ todos }: TodoListProps) {
   return (
     <ul>
       {todos.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
   );
