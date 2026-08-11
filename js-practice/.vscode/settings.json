@@ -1,0 +1,58 @@
+{
+  // ==========================================================================
+  // Autocomplete is switched off in this folder ON PURPOSE.
+  //
+  // These are learning drills. Being shown .map() the instant you type a dot
+  // means you never have to recall it, and recall is the thing being trained.
+  //
+  // Escape hatch: press Ctrl+Space to summon suggestions deliberately when you
+  // are genuinely stuck. That is fine. Being handed the answer unprompted is
+  // what we are stopping.
+  // ==========================================================================
+
+  // The popup that appears as you type.
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+
+  // The popup that fires the moment you type a "." - the main offender.
+  "editor.suggestOnTriggerCharacters": false,
+
+  // Suggestions built from words already in the file.
+  "editor.wordBasedSuggestions": "off",
+
+  // The floating hint showing parameter names while typing inside ( ).
+  "editor.parameterHints.enabled": false,
+
+  // Stop Enter and Tab from silently accepting a highlighted suggestion.
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabCompletion": "off",
+
+  // Grey "ghost text" AI completions. This one switch covers every provider,
+  // including the OpenAI ChatGPT extension and Copilot if it is ever added.
+  "editor.inlineSuggest.enabled": false,
+
+  // TypeScript language service suggestions for JS files.
+  "javascript.suggest.enabled": false,
+  "javascript.suggest.autoImports": false,
+  "javascript.suggest.completeFunctionCalls": false,
+
+  // Belt and braces, in case Copilot gets installed later.
+  "github.copilot.enable": {
+    "*": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": false
+
+  // ==========================================================================
+  // Deliberately LEFT ON:
+  //
+  // Red squiggles for real errors. Being told you wrote products.fliter is
+  // feedback, not a spoiler, and hunting typos teaches nothing.
+  //
+  // Hover documentation. You have to deliberately point at something to get
+  // it, which is looking it up - a skill worth keeping. If you want that gone
+  // too, add:  "editor.hover.enabled": false
+  // ==========================================================================
+}
