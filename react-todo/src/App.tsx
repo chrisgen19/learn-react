@@ -24,6 +24,14 @@ function App() {
     );
   }
 
+  function toggleTodo(id: string) {
+    setTodos((currentTodos) =>
+      currentTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  }
+
   return (
     <main>
       <h1>My Todo App</h1>
@@ -31,6 +39,7 @@ function App() {
       <TodoList
         todos={todos}
         onDeleteTodo={deleteTodo}
+        onToggleTodo={toggleTodo}
       />
       <p>{todos.length} todos</p>
     </main>
