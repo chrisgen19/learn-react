@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla Todo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Vanilla Todo</h1>
+
+      <!--
+        No React here. No build step. No npm.
+        Open this file directly in your browser and it runs.
+
+        The ids below are how app.js finds these elements.
+      -->
+      <form id="todo-form">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="What needs to be done?"
+          autocomplete="off"
+        />
+        <button type="submit">Add</button>
+      </form>
+
+      <!-- app.js fills this in. It starts empty on purpose. -->
+      <ul id="todo-list"></ul>
+
+      <p id="todo-count"></p>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
