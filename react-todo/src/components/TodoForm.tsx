@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 
 type TodoFormProps = {
   onAddTodo: (title: string) => void;
@@ -7,7 +7,7 @@ type TodoFormProps = {
 function TodoForm({ onAddTodo }: TodoFormProps) {
   const [title, setTitle] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!title.trim()) {

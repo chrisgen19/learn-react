@@ -18,11 +18,20 @@ function App() {
     setTodos((currentTodos) => [...currentTodos, newTodo]);
   }
 
+  function deleteTodo(id: string) {
+    setTodos((currentTodos) =>
+      currentTodos.filter((todo) => todo.id !== id),
+    );
+  }
+
   return (
     <main>
       <h1>My Todo App</h1>
       <TodoForm onAddTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList
+        todos={todos}
+        onDeleteTodo={deleteTodo}
+      />
       <p>{todos.length} todos</p>
     </main>
   );
