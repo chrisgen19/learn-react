@@ -1,10 +1,36 @@
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Todo } from "./types/todo";
 
+const STORAGE_KEY = "react-todo.todos";
+
+/**
+ * Reads saved todos from localStorage. Returns an empty list if nothing is
+ * stored, or if the stored value is corrupt or was written by an older shape.
+ */
+function loadTodos(): Todo[] {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+
+    if (!stored) {
+      return [];
+    }
+
+    const parsed: unknown = JSON.parse(stored);
+
+    return Array.isArray(parsed) ? (parsed as Todo[]) : [];
+  } catch {
+    return [];
+  }
+}
+
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(loadTodos);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title: string) {
     // create todo here
