@@ -3,13 +3,18 @@ import type { Todo } from "../types/todo";
 
 type TodoListProps = {
   todos: Todo[];
+  onDeleteTodo: (id: string) => void;
 };
 
-function TodoList({ todos }: TodoListProps) {
+function TodoList({ todos, onDeleteTodo }: TodoListProps) {
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onDeleteTodo={onDeleteTodo}
+        />
       ))}
     </ul>
   );
