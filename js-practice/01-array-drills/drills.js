@@ -63,7 +63,13 @@ console.log("3. totalPrice:", totalPrice);
 //    Hint: you already solved both halves. Chain them: .filter().reduce()
 // ----------------------------------------------------------------------------
 
-const availableTotal = null;
+// const availableTotal = null;
+
+const availableTotal = products
+  .filter((product) => product.inStock)
+  .reduce((runningTotal, product) => {
+    return runningTotal + product.price;
+  }, 0);
 
 console.log("4. availableTotal:", availableTotal);
 
@@ -82,7 +88,11 @@ console.log("4. availableTotal:", availableTotal);
 //    when displaying. Ignore it for now.
 // ----------------------------------------------------------------------------
 
-const priceIncreased = null;
+// const priceIncreased = null;
+
+const priceIncreased = products.map((product) => {
+  return { ...product, price: product.price * 1.1 };
+});
 
 console.log("5. priceIncreased:", priceIncreased);
 console.log("   original Shirt price still 500?", products[0].price === 500);
