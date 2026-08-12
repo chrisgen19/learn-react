@@ -25,6 +25,25 @@ your screen.
 
 Time: about an hour.
 
+### Nested drills
+
+Eight more, on the trap the first eight do not cover: spread is a shallow
+copy, so it stops protecting you as soon as an object contains another object
+or an array.
+
+```bash
+node 01-array-drills/nested-drills.js
+```
+
+Drill 1 makes the bug happen on purpose so you see it once. The rest are about
+copying exactly the path you changed and nothing else, which is the difference
+between a stale screen and an app that re-renders everything for no reason.
+`nested-solutions.js` sits next to it, same rule as before.
+
+Do these after the first eight, not instead of them.
+
+Time: about an hour.
+
 ## 02-vanilla-todo
 
 The same todo app from `../react-todo`, rebuilt with no React.
